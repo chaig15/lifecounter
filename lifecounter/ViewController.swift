@@ -10,11 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var lifelable2: UILabel!
     @IBOutlet weak var lifelabel1: UILabel!
+    @IBOutlet weak var lifelabel2: UILabel!
     @IBOutlet weak var lifelabel3: UILabel!
     @IBOutlet weak var lifelabel4: UILabel!
-    
+    @IBOutlet weak var loseLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         if (tag == 1) {
             label = lifelabel1;
         } else if (tag == 2) {
-            label = lifelable2
+            label = lifelabel2
         } else if (tag == 3) {
             label = lifelabel3
         } else {
@@ -44,7 +44,6 @@ class ViewController: UIViewController {
         label.text = String(newLabel);
         sender.value = 0;
         checkBelowZero(label);
-        
     }
     
     
@@ -54,7 +53,7 @@ class ViewController: UIViewController {
         if (tag == 5) {
             label = lifelabel1;
         } else if (tag == 6) {
-            label = lifelable2
+            label = lifelabel2
         } else if (tag == 7) {
             label = lifelabel3
         } else {
@@ -71,17 +70,20 @@ class ViewController: UIViewController {
     }
     
     func checkBelowZero(_ label: UILabel) {
+        
         if (Int(label.text ?? "0") ?? 0 < 0) {
-            let myLabel = UILabel()
-            myLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-            myLabel.center = CGPoint(x: 0, y: 0)
-            myLabel.textAlignment = .center
-            myLabel.text = "myLabel!!!!!"
-            self.view.addSubview(myLabel)
-            
+            loseLabel.text = "Player \(label.tag) loses!"
+            self.view.addSubview(loseLabel)
         }
     }
     
-    
+   
+    @IBAction func reset(_ sender: UIButton) {
+        loseLabel.text = "";
+        lifelabel1.text = "20";
+        lifelabel2.text = "20";
+        lifelabel3.text = "20";
+        lifelabel4.text = "20";
+    }
 }
 
