@@ -418,13 +418,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Game"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="8p2-Dk-bQP"/>
+                                    <action selector="game:" destination="1VA-96-NwR" eventType="touchUpInside" id="lKT-1X-7Qi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omR-z3-Lbq">
+                                <rect key="frame" x="16" y="69" width="336" height="559"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="IOQ-gi-eZa"/>
                     </view>
+                    <connections>
+                        <outlet property="history" destination="omR-z3-Lbq" id="oLV-sV-Cbo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UlG-ql-JF7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

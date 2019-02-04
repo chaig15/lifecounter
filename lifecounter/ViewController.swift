@@ -86,18 +86,27 @@ class ViewController: UIViewController {
             label = lifelabel8;
         }
         let newLabel: Int
+        let trim: String = label.text!.trimmingCharacters(in: .whitespacesAndNewlines);
         if (sender.value > 0) {
-            newLabel = Int(label.text ?? "0")! + 1
+            newLabel = Int(trim)! + 1
+            addHistoryString(1, tag)
         } else {
-             newLabel = Int(label.text ?? "0")! - 1
+             newLabel = Int(trim)! - 1
+            addHistoryString(-1, tag)
         }
         label.text = String(newLabel);
         sender.value = 0;
         checkBelowZero(label);
     }
     
-    func addHistoryString() {
-       
+    func addHistoryString(_ increment: Int, _ player: Int) {
+        var string: String = "";
+        if (increment > 0) {
+            string = "Player " + String(player) + " gained " + String(increment) + " life";
+        } else {
+            string = "Player " + String(player) + " lost " + String(increment) + " life";
+        }
+        historyStrings.append(string);
     }
     
     
@@ -134,8 +143,11 @@ class ViewController: UIViewController {
         let trim: String = label.text!.trimmingCharacters(in: .whitespacesAndNewlines);
         if (positive) {
             newLabel = Int(trim)! + increment
+            addHistoryString(increment, tag);
         } else {
             newLabel = Int(trim)! - increment
+            increment.negate();
+            addHistoryString(increment, tag);
         }
         label.text = String(newLabel);
         checkBelowZero(label);
@@ -195,6 +207,7 @@ class ViewController: UIViewController {
         lifelabel7.text = "20";
         lifelabel8.text = "20";
         gameStarted = false;
+        historyStrings.removeAll()
     }
 }
 
